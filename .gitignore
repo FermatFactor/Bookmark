@@ -1,0 +1,7 @@
+go.sum
+go.mod
+*.exe
+*.out
+.DS_Store
+.env
+
