@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: black;
+            --accent-color: #00bcd4; /* default secondary */
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            max-width: 600px;
+            line-height: 1.5;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .start-btn {
+            background-color: var(--accent-color);
+            color: black;
+        }
+
+        .gallery-btn {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .color-picker {
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #111;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        📌 Bookmark
+    </header>
+
+    <main>
+        <h1>Welcome to Bookmark</h1>
+        <p>
+            Capture your thoughts with a photo and let us surprise you in the future with a nostalgic reminder.  
+            You can store personal memories or explore our community gallery.  
+            Start creating your own memory jar today.
+        </p>
+
+        <div class="btn-container">
+            <button class="start-btn" onclick="location.href='login.html'">Get Started</button>
+            <button class="gallery-btn" onclick="location.href='gallery.html'">Explore Gallery</button>
+        </div>
+
+        <div class="color-picker">
+            <label for="accentColor">🎨 Accent Color:</label>
+            <input type="color" id="accentColor" value="#00bcd4" onchange="changeAccentColor(this.value)">
+        </div>
+    </main>
+
+    <footer>
+        © 2025 Bookmark - Relive Your Memories
+    </footer>
+
+    <script>
+        function changeAccentColor(color) {
+            document.documentElement.style.setProperty('--accent-color', color);
+            localStorage.setItem('accentColor', color);
+        }
+
+        // Load saved color
+        window.onload = () => {
+            const savedColor = localStorage.getItem('accentColor');
+            if (savedColor) {
+                document.documentElement.style.setProperty('--accent-color', savedColor);
+                document.getElementById('accentColor').value = savedColor;
+            }
+        };
+    </script>
+
+</body>
+</html>

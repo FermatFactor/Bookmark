@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Bookmark</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="black" data-accent="teal">
+  <header>
+    <h1>Create an Account</h1>
+  </header>
+
+  <main class="form-container">
+    <form id="signup-form">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required placeholder="Choose a username">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required placeholder="Choose a password">
+
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm password">
+
+      <button type="submit" class="btn-accent">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="login.html" class="accent-link">Log In</a></p>
+  </main>
+
+  <footer>
+    <p>© 2025 Bookmark. All rights reserved.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

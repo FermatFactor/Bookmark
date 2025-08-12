@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookmark Gallery</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            padding: 1rem;
+            background-color: #111;
+            border-bottom: 2px solid var(--accent-color, #00bcd4);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        main {
+            padding: 1rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .card {
+            background-color: #1a1a1a;
+            border: 2px solid var(--accent-color, #00bcd4);
+            border-radius: 8px;
+            padding: 1rem;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: white;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent-color, #00bcd4);
+        }
+
+        .settings-panel {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background-color: #111;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        .color-picker {
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 Bookmark Gallery</h1>
+    </header>
+
+    <main>
+        <div class="gallery" id="bookmarkGallery">
+            <!-- Cards will be injected by JS -->
+        </div>
+    </main>
+
+    <div class="settings-panel">
+        <label for="accentColor">Ambient Color:</label>
+        <input type="color" id="accentColor" class="color-picker" value="#00bcd4" />
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Sample bookmarks for now
+        const bookmarks = [
+            { title: "Learn Go", description: "Go language tutorials", url: "https://golang.org" },
+            { title: "Supabase Docs", description: "Backend for our app", url: "https://supabase.com/docs" },
+            { title: "MDN Web Docs", description: "Frontend reference", url: "https://developer.mozilla.org" }
+        ];
+
+        const gallery = document.getElementById('bookmarkGallery');
+
+        bookmarks.forEach(b => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <h3>${b.title}</h3>
+                <p>${b.description}</p>
+                <a href="${b.url}" target="_blank" style="color: var(--accent-color, #00bcd4);">Visit</a>
+            `;
+            gallery.appendChild(card);
+        });
+
+        // Handle accent color change
+        const accentPicker = document.getElementById('accentColor');
+        accentPicker.addEventListener('input', (e) => {
+            document.documentElement.style.setProperty('--accent-color', e.target.value);
+            localStorage.setItem('accentColor', e.target.value);
+        });
+
+        // Load saved accent color
+        const savedColor = localStorage.getItem('accentColor');
+        if (savedColor) {
+            document.documentElement.style.setProperty('--accent-color', savedColor);
+            accentPicker.value = savedColor;
+        }
+    </script>
+</body>
+</html>

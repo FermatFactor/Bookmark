@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>📓 Bookmark</h1>
+        <div class="theme-picker">
+            <label for="accentColor">Accent:</label>
+            <input type="color" id="accentColor">
+        </div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </header>
+
+    <main class="app-container">
+        <!-- Bookmark creation -->
+        <section class="create-bookmark">
+            <h2>Create a New Bookmark</h2>
+            <form id="bookmarkForm">
+                <textarea id="bookmarkText" placeholder="Write your thought here..." required></textarea>
+                <button type="submit">Save Bookmark</button>
+            </form>
+        </section>
+
+        <!-- Bookmark list -->
+        <section class="bookmark-list">
+            <h2>Your Bookmarks</h2>
+            <div id="bookmarksContainer" class="bookmarks-grid">
+                <!-- JS will insert bookmarks here -->
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
